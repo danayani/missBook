@@ -4,7 +4,10 @@ export const utilService = {
     getRandomIntInclusive,
     loadFromStorage,
     saveToStorage,
-    getAmount
+    padNum,
+    getDayName,
+    getMonthName,
+    getYearsDistance
 }
 
 function makeId(length = 6) {
@@ -34,6 +37,11 @@ function getRandomIntInclusive(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min //The maximum is inclusive and the minimum is inclusive 
 }
 
+function getYearsDistance(year) {
+    const currYear = new Date().getFullYear()
+    return currYear - year
+}
+
 function saveToStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value))
 }
@@ -43,15 +51,18 @@ function loadFromStorage(key) {
     return (data) ? JSON.parse(data) : undefined
 }
 
-function getAmount(amount, currency) {
-    switch (currency) {
-        case 'USD':
-            return `$ ${amount}`
-        case 'EUR':
-            return `${amount} €`
-        case 'ILS':
-            return `₪ ${amount}`
-        default:
-            return `${amount}`
-    }
+function padNum(num) {
+    return (num > 9) ? num + '' : '0' + num
+}
+
+function getDayName(date, locale) {
+    date = new Date(date)
+    return date.toLocaleDateString(locale, { weekday: 'long' })
+}
+
+function getMonthName(date) {
+    const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+        'July', 'August', 'September', 'October', 'November', 'December'
+    ]
+    return monthNames[date.getMonth()]
 }

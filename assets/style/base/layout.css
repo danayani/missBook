@@ -1,14 +1,7 @@
 .main-layout {
-  display: grid;
-  grid-template-columns: 1.6rem 1fr 1.6rem;
-}
-
-.main-layout>* {
-  grid-column: 2;
-}
-
-.main-layout .full {
-  grid-column: 1/-1;
+  margin: 0 auto;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
 }
 
 .container {
@@ -16,3 +9,5 @@
   padding: 1em;
   margin: auto;
 }
+
+

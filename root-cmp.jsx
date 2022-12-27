@@ -1,36 +1,29 @@
-const { useState } = React
+const Router = ReactRouterDOM.HashRouter
+const { Route, Routes } = ReactRouterDOM
+
 import { AppHeader } from './cmps/app-header.jsx'
-import { HomePage } from "./views/home.jsx";
-import { BooksIndex } from "./views/books-index.jsx";
-import { AboutUs } from "./views/about.jsx";
+import { UserMsg } from './cmps/user-msg.jsx'
+import { AboutUs } from './pages/about-us.jsx'
+import { BookDetails } from './pages/book-details.jsx'
+import { BookEdit } from './pages/book-edit.jsx'
+import { BookIndex } from './pages/book-index.jsx'
+import { Home } from './pages/home.jsx'
 
 export function App() {
-    const [page, setPage] = useState('book')
-
-    function onSetPage(ev, page) {
-        ev.preventDefault()
-        setPage(page)
-    }
-
-    return <section className="main-layout app">
-
-        {/* <header className="app-header full main-layout">
-            <h1>Miss Books</h1>
-            <nav className="app-nav">
-                <a href="#" onClick={() => setPage('home')}>Home</a> |
-                <a href="#" onClick={() => setPage('about')}>About</a> |
-                <a href="#" onClick={() => setPage('books')}>Books</a>
-            </nav>
-        </header> */}
-
-        <header className="app-header full main-layout">
-            <AppHeader onSetPage={onSetPage} />
-        </header>
-
-        <main>
-            {page === 'home' && <HomePage />}
-            {page === 'about' && <AboutUs />}
-            {page === 'book' && <BooksIndex />}
-        </main>
-    </section>
+    return <Router>
+        <section className="full app">
+            <AppHeader />
+            <main>
+                <Routes>
+                    <Route element={<Home /> } path="/" />
+                    <Route element={<AboutUs /> } path="/about" />
+                    <Route element={<BookIndex /> } path="/book" />
+                    <Route element={<BookEdit />} path="/book/edit" />
+                    <Route element={<BookEdit />} path="/book/edit/:bookId" />
+                    <Route element={<BookDetails/>} path="/book/:bookId" />
+                </Routes>
+            </main>
+            <UserMsg />
+        </section>
+    </Router>
 }
