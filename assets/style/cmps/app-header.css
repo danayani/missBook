@@ -1,7 +1,7 @@
 .app-header {
   background-color: var(--clr3bg);
   /* color: var(--clr2bg); */
-  color: violet;
+  color: rgb(245, 245, 245);
 
   padding: 1em;
 }
@@ -18,7 +18,7 @@
 .app-nav > a.active{
   /* color: rgb(165, 42, 144);
    */
-   color: violet;
+   color: rgba(0, 9, 12, 0.946);
   box-shadow: 0px 4px 0 0;
 }
 
