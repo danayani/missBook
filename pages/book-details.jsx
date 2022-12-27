@@ -20,10 +20,6 @@ export function BookDetails() {
         loadBook()
     }, [])
 
-    // useEffect(() => {
-    //     loadBook()
-    // }, [currBook])
-
     function loadBook() {
         bookService.get(bookId)
             .then((book) => setBook(book))
@@ -95,7 +91,6 @@ export function BookDetails() {
         <LongTxt txt={book.description} length={100} />
 
         <img src={`${book.thumbnail}`} alt="book image" />
-
 
         <AddReview onSaveReview={onSaveReview} />
 

@@ -34,10 +34,8 @@ export function BookEdit() {
         ev.preventDefault()
         bookService.save(bookToEdit).then((book)=>{
             console.log('book', book)
-            // eventBusService.emit('show-user-msg' , {txt:'Book saved' , type:'success'})
             showSuccessMsg('Book saved')
             navigate('/book')
-
         })
     }
 

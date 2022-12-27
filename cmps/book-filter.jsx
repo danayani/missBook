@@ -2,7 +2,6 @@ import { bookService } from "../services/book.service.js"
 
 const { useState, useEffect , useRef } = React
 
-
 export function BookFilter({ onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState(bookService.getDefaultFilter())
@@ -12,11 +11,9 @@ export function BookFilter({ onSetFilter }) {
         elInputRef.current.focus()
     } , [])
 
-
     useEffect(() => {
         onSetFilter(filterByToEdit)
     }, [filterByToEdit])
-
 
     function handleTitleChange({ target }) {
         let { value, name: field, type } = target
@@ -26,15 +23,10 @@ export function BookFilter({ onSetFilter }) {
         })
     }
 
-
     function onSubmitFilter(ev) {
         ev.preventDefault()
         onSetFilter(filterByToEdit)
     }
-
-
-
-
 
     return <section className="book-filter main-layout">
         <h2>Filter our books</h2>
